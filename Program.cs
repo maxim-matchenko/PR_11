@@ -10,7 +10,7 @@ namespace PR_11
 {
     internal class Program
     {
-        public static void Main(String[] args)
+        public static void Main(string[] args)
         {
             Console.Title = "Практическая работа №11";
             Console.BackgroundColor = ConsoleColor.Yellow;
@@ -18,24 +18,24 @@ namespace PR_11
             Console.OutputEncoding = Encoding.UTF8; // важно 
             Console.Clear(); // Очистка консоли
             int index;
-            string select;
-            string sourceText; //исходный текст 
-            string tangetSubstring;//целевая подстрока
+            string select;// переменная для контроля повторного запуска
+            string str1;// строка
+            string str2;//подстрока
             Console.WriteLine("Здравствуйте!");
             do // внешний цикл для повторного запуска 
             {
                 Console.WriteLine("\n--- Новый расчет ---");
-                while (true)// Цикл ввода строки sourceText
+                while (true)// Цикл ввода строки str1
                 {
                     try
                     {
-                        Console.Write("Введите строку sourceText: ");
-                        sourceText = Console.ReadLine();
-                        if (String.IsNullOrWhiteSpace(sourceText))
+                        Console.Write("Введите строку str1: ");
+                        str1 = Console.ReadLine();
+                        if (String.IsNullOrWhiteSpace(str1))
                         {
                             throw new ArgumentException("Строка не может быть пустой или состоять только из пробелов");
                         }
-                        break; // Выход из цикла ввода sourceText
+                        break; // Выход из цикла ввода str1
                     }
                     catch (Exception e)
                     {
@@ -45,13 +45,13 @@ namespace PR_11
                         Console.WriteLine("Пожалуйста, повторите ввод.\n");
                     }
                 }
-                while (true)// Цикл ввода подстроки tangetSubstring
+                while (true)// Цикл ввода подстроки str2
                 {
                     try
                     {
-                        Console.Write("Введите подстроку tangetSubstring: ");
-                        tangetSubstring = Console.ReadLine();
-                        if (String.IsNullOrWhiteSpace(tangetSubstring))
+                        Console.Write("Введите подстроку str2: ");
+                        str2 = Console.ReadLine();
+                        if (String.IsNullOrWhiteSpace(str2))
                         {
                             throw new ArgumentException("Строка не может быть пустой или состоять только из пробелов");
                         }
@@ -66,11 +66,11 @@ namespace PR_11
                     }
                 }
                 // Удаление подстроки 
-                while ((index = sourceText.IndexOf(tangetSubstring)) >= 0)
+                while ((index = str1.IndexOf(str2)) >= 0)
                 {
-                    sourceText = sourceText.Remove(index, tangetSubstring.Length);
+                    str1 = str1.Remove(index, str2.Length);
                 }
-                Console.WriteLine("Преобразованная строка: " + sourceText);
+                Console.WriteLine("Преобразованная строка: " + str1);
                 Console.Write("\nХотите выполнить программу еще раз? (да - 1/нет - любая клавиша): ");
                 select = Console.ReadLine();
             }
